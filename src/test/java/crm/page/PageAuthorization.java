@@ -1,75 +1,31 @@
 package crm.page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 public class PageAuthorization {
 
-    private WebDriver driver;
+    public final SelenideElement loginField = $x("//input[@name=\"login\"]");
 
-    private WebDriverWait wait;
+    public final SelenideElement loginInput = $x("//label[@for=\"input-14\"]");
 
-    private final By loginField = By.xpath("//*[@id=\"input-14\"]");
+    public final SelenideElement passwordField = $x("//input[@name=\"password\"]");
 
-    private final By passwordField = By.xpath("//*[@id=\"input-17\"]");
+    public final SelenideElement passwordInput = $x("//label[@for=\"input-17\"]");
 
-    private final By authorizationBtn = By.xpath("//*[@id=\"app\"]/div/div[1]/main/div/div/main/div/div/div/form/button");
+    public final SelenideElement authorizationBtn = $x("//span[@class=\"v-btn__content\"]");
 
-    private final By notificationLocator = By.xpath("//*[@id=\"app\"]/div/div[2]/ul/div");
+    public final SelenideElement notificationLocator = $x("//ul[@class=\"container-group\"]");
 
-    public PageAuthorization(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
-    }
+    public final SelenideElement nameFormLocator = $x("//div[@class=\"v-card__title text-h5 login-header\"]");
+
 
     public void dataEntry(String login, String password){
-        driver.findElement(loginField).click();
-        driver.findElement(loginField).sendKeys(login);
-        driver.findElement(passwordField).click();
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(authorizationBtn).click();
+        loginField.click();
+        loginField.setValue(login);
+        passwordField.click();
+        passwordField.setValue(password);
+        authorizationBtn.click();
     }
-
-    public void correctInput() {
-        dataEntry("domnin", "26061992h");
-        checkSuccessNotification();
-        checkPageRedirect();
-    }
-
-    public void incorrectInputLogin() {
-        dataEntry("domni", "26061992h");
-        checkSuccessNotificationError();
-        checkNoRedirect();
-    }
-
-    public void incorrectInputPassword() {
-        dataEntry("domnin", "26061992");
-        checkSuccessNotificationError();
-        checkNoRedirect();
-    }
-
-    public void incorrectInputNotification() {
-        dataEntry("", "");
-        checkNoRedirect();
-    }
-
-    public void checkSuccessNotification() {
-        wait.until(ExpectedConditions.textToBe(notificationLocator, "Вы успешно авторизовались"));
-    }
-
-    public void checkPageRedirect() {
-
-        wait.until(ExpectedConditions.not(ExpectedConditions.urlContains("/login")));
-    }
-
-    public void checkSuccessNotificationError() {
-        wait.until(ExpectedConditions.textToBe(notificationLocator, "Не верный логин или пароль"));
-    }
-
-    public void checkNoRedirect() {
-        wait.until(ExpectedConditions.urlContains("/login"));
-    }
-
 }
