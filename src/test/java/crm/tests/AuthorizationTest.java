@@ -1,32 +1,24 @@
 package crm.tests;
 
-import com.opencsv.exceptions.CsvException;
-import crm.page.AuthorizationPage;
-import crm.utils.UserConfig;
-import crm.page.notifification.NotificationPage;
+import crm.adapters.pages.AuthorizationPage;
+import crm.checks.UrlChecks;
 import io.qameta.allure.Description;
-
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Selenide.open;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.urlContaining;
-
-public class AuthorizationTest extends BasedTest{
+public class AuthorizationTest extends BasedTest {
 
     AuthorizationPage auth = new AuthorizationPage();
-    NotificationPage notif = new NotificationPage();
-    UserConfig userConfig = new UserConfig();
 
-    public void openingAuthorizationPage(){
+    public void openingAuthorizationPage() {
         open("/login");
     }
 
     @Test(priority = 1, groups = "AuthorizationTest")
     @Description("Проверка наименования элементов формы")
-    public void checkingFormElements(){
+    public void checkingFormElements() {
         openingAuthorizationPage();
         auth.divLoginHeader.shouldHave(exactText("Авторизация"));
         auth.inputLogin.shouldHave(exactText("Логин"));
@@ -36,67 +28,52 @@ public class AuthorizationTest extends BasedTest{
 
     @Test(priority = 2, groups = "AuthorizationTest")
     @Description("Авторизация с валидными данными")
-    public void verifyingAuthorizationWithValidData() throws IOException, CsvException {
+    public void verifyingAuthorizationWithValidData() {
         openingAuthorizationPage();
-        userConfig.loginAsDBA();
-        checkPageRedirect();
-        checkSuccessNotification();
+        loginHelper.loginAsDBA();
+        UrlChecks.BaseChecks.checkPageRedirect();
+        checkNotification.checkSuccessNotification();
     }
 
     @Test(priority = 3, groups = "AuthorizationTest")
     @Description("Авторизация с вводом невалидного логина")
-    public void CheckingAuthorizationByEnteringAnInvalidLogin() {
+    public void checkingAuthorizationByEnteringAnInvalidLogin() {
         openingAuthorizationPage();
         auth.dataEntry("domni", "26061992h");
-        checkSuccessNotificationError();
-        checkNoRedirect();
+        checkNotification.checkErrorSuccessNotification();
+        UrlChecks.AuthorizationChecks.checkNoRedirect();
     }
 
     @Test(priority = 4, groups = "AuthorizationTest")
     @Description("Авторизация с вводом невалидного пароля")
-    public void CheckingAuthorizationByEnteringAnInvalidPassword() {
+    public void checkingAuthorizationByEnteringAnInvalidPassword() {
         openingAuthorizationPage();
         auth.dataEntry("domnin", "26061992");
-        checkSuccessNotificationError();
-        checkNoRedirect();
+        checkNotification.checkErrorSuccessNotification();
+        UrlChecks.AuthorizationChecks.checkNoRedirect();
     }
 
     @Test(priority = 5, groups = "AuthorizationTest")
     @Description("Проверка обязательных полей")
-    public void checkingRequiredFields(){
+    public void checkingRequiredFields() {
         openingAuthorizationPage();
         auth.dataEntry("", "");
-        checkNoRedirect();
+        UrlChecks.AuthorizationChecks.checkNoRedirect();
     }
 
     @Test(priority = 6, groups = "AuthorizationTest")
     @Description("Проверка валидации пароля")
-    public void passwordValidationCheck(){
+    public void passwordValidationCheck() {
         openingAuthorizationPage();
         auth.dataEntry("domnin", "");
-        checkNoRedirect();
+        UrlChecks.AuthorizationChecks.checkNoRedirect();
     }
 
     @Test(priority = 7, groups = "AuthorizationTest")
     @Description("Проверка валидации логина")
-    public void loginValidationCheck(){
+    public void loginValidationCheck() {
         openingAuthorizationPage();
         auth.dataEntry("", "26061992h");
-        checkNoRedirect();
+        UrlChecks.AuthorizationChecks.checkNoRedirect();
     }
-
-    public void checkSuccessNotification() {
-        notif.notification.shouldHave(text("Вы успешно авторизовались"));
-    }
-
-    public void checkPageRedirect() {
-        webdriver().shouldHave(urlContaining("/main/new"));
-    }
-
-    public void checkSuccessNotificationError() {notif.notification.shouldHave(text("Не верный логин или пароль"));}
-
-    public void checkNoRedirect() {
-        webdriver().shouldHave(urlContaining("/login"));
-    }
-
 }

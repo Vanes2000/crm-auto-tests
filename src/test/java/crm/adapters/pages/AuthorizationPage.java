@@ -1,4 +1,4 @@
-package crm.page;
+package crm.adapters.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -14,7 +14,7 @@ public class AuthorizationPage {
 
     public SelenideElement spanContent = $x("//span[@class='v-btn__content']");
 
-    public void dataEntry(String login, String password){
+    public void dataEntry(String login, String password) {
         inputLogin.click();
         inputLogin.$("#input-14").setValue(login);
         inputPassword.click();
