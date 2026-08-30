@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class NameGenerator {
 
-    private static final String[] MALE_FIRST_NAMES = {"Михаил","Александр", "Лев", "Максим", "Артем", "Марк", "Иван", "Матвей", "Роман", "Тимофей", "Дмитрий", "Мирон", "Даниил", "Федор", "Мухаммад", "Кирилл", "Илья", "Андрей", "Владимир", "Арсений", "Константин", "Алексей", "Ярослав", "Егор", "Павел"};
+    private static final String[] MALE_FIRST_NAMES = {"Михаил", "Александр", "Лев", "Максим", "Артем", "Марк", "Иван", "Матвей", "Роман", "Тимофей", "Дмитрий", "Мирон", "Даниил", "Федор", "Мухаммад", "Кирилл", "Илья", "Андрей", "Владимир", "Арсений", "Константин", "Алексей", "Ярослав", "Егор", "Павел"};
 
     private static final String[] FEMALE_FIRST_NAMES = {"София", "Анна", "Мария", "Ева", "Василиса", "Виктория", "Варвара", "Александра", "Полина", "Алиса", "Елизавета", "Мирослава", "Арина", "Ксения", "Екатерина", "Есения", "Вера", "Валерия", "Вероника", "Кира", "Амина", "Дарья", "Милана", "Анастасия", "Мия"};
 
@@ -18,10 +18,9 @@ public class NameGenerator {
 
     private static final String[] FEMALE_MIDDLE_NAMES = {"Александровна", "Алексеевна", "Анатольевна", "Андреевна", "Антоновна", "Аркадьевна", "Артемовна", "Борисовна", "Валентиновна", "Валерьевна", "Васильевна", "Викторовна", "Витальевна", "Владимировна", "Владиславовна", "Вячеславовна", "Геннадьевна", "Георгиевна", "Григорьевна", "Даниловна", "Денисовна", "Дмитриевна", "Евгеньевна", "Егоровна", "Ивановна"};
 
-     static Random random = new Random();
+    static Random random = new Random();
 
     public static String[] generateRandomName() {
-
         Gender randomGender = random.nextBoolean() ? Gender.MALE : Gender.FEMALE;
 
         String[] firstNames = (randomGender == Gender.MALE) ? MALE_FIRST_NAMES : FEMALE_FIRST_NAMES;
@@ -40,13 +39,7 @@ public class NameGenerator {
         return array[randomIndex];
     }
 
-    public enum Gender {
-        MALE, FEMALE
-    }
-
-
-    public static String generateRandomBirthDate(){
-
+    public static String generateRandomBirthDate() {
         int year = 1950 + random.nextInt(51);
         int month = 1 + random.nextInt(12);
         int day = 1 + random.nextInt(28);
@@ -55,5 +48,9 @@ public class NameGenerator {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         return formatter.format(birthDate);
+    }
+
+    public enum Gender {
+        MALE, FEMALE
     }
 }
