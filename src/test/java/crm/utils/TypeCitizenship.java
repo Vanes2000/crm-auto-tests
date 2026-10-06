@@ -5,13 +5,13 @@ import crm.adapters.pages.PersonalPage;
 
 public enum TypeCitizenship {
 
-    RF("РФ", PersonalPage.TypeCitizenship.citizenshipRF),
-    Uzbekistan("Узбекистан", PersonalPage.TypeCitizenship.citizenshipUzbekistan),
-    Kyrgyzstan("Киргизия", PersonalPage.TypeCitizenship.citizenshipKyrgyzstan),
-    Armenia("Армения", PersonalPage.TypeCitizenship.citizenshipArmenia),
-    Azerbaijan("Азербайджан", PersonalPage.TypeCitizenship.citizenshipAzerbaijan),
-    Tajikistan("Таджикистан", PersonalPage.TypeCitizenship.citizenshipTajikistan),
-    Kazakhstan("Казахстан", PersonalPage.TypeCitizenship.citizenshipKazakhstan);
+    RU("РФ", PersonalPage.TypeCitizenship.citizenshipRF),
+    UZB("Узбекистан", PersonalPage.TypeCitizenship.citizenshipUzbekistan),
+    KGZ("Киргизия", PersonalPage.TypeCitizenship.citizenshipKyrgyzstan),
+    ARG("Армения", PersonalPage.TypeCitizenship.citizenshipArmenia),
+    AZE("Азербайджан", PersonalPage.TypeCitizenship.citizenshipAzerbaijan),
+    TJK("Таджикистан", PersonalPage.TypeCitizenship.citizenshipTajikistan),
+    KAZ("Казахстан", PersonalPage.TypeCitizenship.citizenshipKazakhstan);
 
     private final String name;
     private final SelenideElement element;

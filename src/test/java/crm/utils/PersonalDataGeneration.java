@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-public class NameGenerator {
+public class PersonalDataGeneration {
 
     private static final String[] MALE_FIRST_NAMES = {"Михаил", "Александр", "Лев", "Максим", "Артем", "Марк", "Иван", "Матвей", "Роман", "Тимофей", "Дмитрий", "Мирон", "Даниил", "Федор", "Мухаммад", "Кирилл", "Илья", "Андрей", "Владимир", "Арсений", "Константин", "Алексей", "Ярослав", "Егор", "Павел"};
 

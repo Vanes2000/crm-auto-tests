@@ -9,6 +9,7 @@ import crm.tests.precondition.PreconditionTestPersonal;
 import crm.utils.LoginHelper;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -25,12 +26,17 @@ public class BasedTest {
     PersonalPage.EmployeeDataForm employeeDataForm = new PersonalPage.EmployeeDataForm();
     PersonalPage.EmployeeDocumentsForm employeeDocumentsForm = new PersonalPage.EmployeeDocumentsForm();
 
+    @AfterMethod
     public void closeForm() {
         Actions actions = new Actions(WebDriverRunner.getWebDriver());
         actions.sendKeys(Keys.ESCAPE).perform();
     }
 
-    public static String URL_BASE = "https://crm-4.stand.personal-crm.ru";
+    public static String URL_BASE = "https://crm-42.stand.personal-crm.ru";
+
+    //https://crm-42.stand.personal-crm.ru
+
+    //https://crm-4.stand.personal-crm.ru
 
     @BeforeClass
     public void setUp() {
@@ -41,8 +47,8 @@ public class BasedTest {
     public void globalSetUp() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
-        Configuration.pageLoadTimeout = 2000000;
+        Configuration.timeout = 10_000;
+        Configuration.pageLoadTimeout = 60_000;
         Configuration.baseUrl = URL_BASE;
     }
 

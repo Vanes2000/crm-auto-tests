@@ -4,13 +4,13 @@ import com.codeborne.selenide.Selenide;
 import crm.adapters.pages.PersonalPage;
 import crm.checks.UrlChecks;
 import crm.utils.DocumentType;
-import crm.utils.NameGenerator;
+import crm.utils.PersonalDataGeneration;
 import crm.utils.TestFile;
 import crm.utils.TypeCitizenship;
 import io.qameta.allure.Description;
 
 import static com.codeborne.selenide.Condition.*;
-import static crm.utils.NameGenerator.generateRandomBirthDate;
+import static crm.utils.PersonalDataGeneration.generateRandomBirthDate;
 
 public class PreconditionTestPersonal {
 
@@ -34,7 +34,7 @@ public class PreconditionTestPersonal {
 
     @Description("Заполнение основных данных сотрудника - Розница")
     public void fillEmployeeDataRetail() {
-        String[] randomName = NameGenerator.generateRandomName();
+        String[] randomName = PersonalDataGeneration.generateRandomName();
         String firstName = randomName[0];
         String lastName = randomName[1];
         String middleName = randomName[2];
@@ -49,7 +49,9 @@ public class PreconditionTestPersonal {
         employeeDataForm.fieldDateOfBirth.setValue(generateRandomBirthDate());
         employeeDataForm.fieldTelephone.shouldBe(exist, visible).click();
         employeeDataForm.fieldTelephone.setValue("88887776655");
-        employeeDataForm.fieldCitizenship.shouldBe(exist, visible).click();
+        employeeDataForm.fieldGender.shouldBe(exist, visible).click();
+        employeeDataForm.man.shouldBe(exist, visible).click();
+
     }
 
     @Description("Выбор гражданства")
@@ -60,7 +62,7 @@ public class PreconditionTestPersonal {
 
     @Description("Заполнение основных данных сотрудника - Логистика")
     public void fillEmployeeDataLogistics() {
-        String[] randomName = NameGenerator.generateRandomName();
+        String[] randomName = PersonalDataGeneration.generateRandomName();
         String firstName = randomName[0];
         String lastName = randomName[1];
         String middleName = randomName[2];
@@ -105,7 +107,10 @@ public class PreconditionTestPersonal {
         employeeDataForm.fieldDateOfBirth.setValue("22.04.1962");
         employeeDataForm.fieldTelephone.click();
         employeeDataForm.fieldTelephone.setValue("88887776655");
-        choosingCitizenship(TypeCitizenship.RF);
+        choosingCitizenship(TypeCitizenship.RU);
+        employeeDataForm.fieldGender.click();
+        employeeDataForm.woman.click();
+
         employeeDataForm.buttonSave.click();
     }
 

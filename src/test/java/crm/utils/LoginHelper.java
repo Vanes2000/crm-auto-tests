@@ -11,6 +11,10 @@ public class LoginHelper {
         loginAsUser("Retail_m_auth", UserConfig.getPassword("Retail_m_auth"));
     }
 
+    public void loginAsManagerRetail1() {
+        loginAsUser("M_v1_1.1", UserConfig.getPassword("M_v1_1.1"));
+    }
+
     public void loginAsDBA() {
         loginAsUser("domnin", UserConfig.getPassword("domnin"));
     }

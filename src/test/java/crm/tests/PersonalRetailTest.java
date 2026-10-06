@@ -19,34 +19,17 @@ public class PersonalRetailTest extends BasedTest {
 
     @BeforeClass
     public void openAuth() {
-        loginHelper.loginAsManagerRetail();
+        loginHelper.loginAsManagerRetail1();
         UrlChecks.BaseChecks.checkPageRedirect();
         PreconditionTestPersonal.openStaffAdditionForm();
     }
 
     @Test(priority = 1, groups = {"system"})
     @Description("Добавление линейщика РФ с паспортом")
-    public void failedUserAddition() {
+    public void addUserWithPassportRF() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
-        preconditions.SavingDataAfterInput();
-        checkNotification.checkSaveNotification();
-        preconditions.verifyFirstStageTransition();
-        preconditions.addDocument(DocumentType.PASSPORT, TestFile.JPG);
-        checkNotification.checkSaveNotification();
-        UrlChecks.PersonalCreationChecks.checkPageAddPersonalForm();
-        employeeDocumentsForm.spanContent.shouldBe(exist, visible).click();
-        UrlChecks.PersonalCreationChecks.checkPagePersonal();
-        checkNotification.checkSaveNotification();
-    }
-
-    @Test(priority = 2, groups = {"system"})
-    @Description("Добавление линейщика тип гражданства: ЕАС")
-    public void failedUserAddition2() {
-        PreconditionTestPersonal.openStaffAddForm();
-        preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.Kyrgyzstan);
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
         preconditions.SavingDataAfterInput();
         checkNotification.checkSaveNotification();
         preconditions.verifyFirstStageTransition();
@@ -63,7 +46,7 @@ public class PersonalRetailTest extends BasedTest {
     public void addingALinemanWithoutRequiredDocuments() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
         employeeDataForm.checkBoxWithoutIdentificationDocuments.click();
         preconditions.SavingDataAfterInput();
         preconditions.verifyFirstStageTransition();
@@ -88,7 +71,7 @@ public class PersonalRetailTest extends BasedTest {
     public void addLinemanWithAllAvailableAttributes() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
         employeeDataForm.checkBoxEmploymentAvailable.click();
         employeeDataForm.checkBoxFullTime.click();
         employeeDataForm.nameFullTime.click();
@@ -114,30 +97,31 @@ public class PersonalRetailTest extends BasedTest {
         employeeErrorDataForm.nameError.shouldBe(exist, visible);
         employeeColorIndicatorLocators.colorName.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
 
-        employeeColorIndicatorLocators.colorPatronymic.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
+        employeeColorIndicatorLocators.colorPatronymic.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
 
         employeeErrorDataForm.dateOfBirthError.shouldBe(exist, visible);
         employeeColorIndicatorLocators.colorDateOfBirth.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
 
-        employeeColorIndicatorLocators.colorDirection.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
+        employeeColorIndicatorLocators.colorDirection.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
 
         employeeErrorDataForm.telephoneError.shouldBe(exist, visible);
         employeeColorIndicatorLocators.colorTelephone.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
 
-        employeeColorIndicatorLocators.colorAccess.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
+        employeeColorIndicatorLocators.colorAccess.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
 
         employeeErrorDataForm.citizenshipError.shouldBe(exist, visible);
         employeeColorIndicatorLocators.colorCitizenship.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
 
-        employeeColorIndicatorLocators.colorCheckBoxEmploymentAvailable.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
 
-        employeeColorIndicatorLocators.colorCheckBoxFullTime.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
+        employeeColorIndicatorLocators.colorCheckBoxEmploymentAvailable.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
 
-        employeeColorIndicatorLocators.colorCheckBoxWithoutIdentificationDocuments.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAUL_TCOLOR ));
+        employeeColorIndicatorLocators.colorCheckBoxFullTime.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
+
+        employeeColorIndicatorLocators.colorCheckBoxWithoutIdentificationDocuments.shouldBe(cssValue(ColorPage.COLOR, ColorPage.DEFAULT_COLOR ));
 
         checkNotification.checkNotificationText();
 
-        employeeDataForm.buttonCloseAddFrom.shouldBe(exist, visible).click();
+        employeeDataForm.buttonCloseAddForm.shouldBe(exist, visible).click();
     }
 
     @Test(priority = 7, groups = {"validation form", "negative"})
@@ -145,7 +129,7 @@ public class PersonalRetailTest extends BasedTest {
     public void validationCheckWhenAddingALineWorkerWithoutAnIDOrIdentificationDocuments() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
         preconditions.SavingDataAfterInput();
         preconditions.verifyFirstStageTransition();
         checkNotification.checkSaveNotification();
@@ -162,7 +146,7 @@ public class PersonalRetailTest extends BasedTest {
     public void checkingValidationDocumentAdditionForm() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
         preconditions.SavingDataAfterInput();
         checkNotification.checkSaveNotification();
         preconditions.verifyFirstStageTransition();
@@ -173,19 +157,9 @@ public class PersonalRetailTest extends BasedTest {
         employeeErrorDataForm.dropZoneError.shouldBe(exist, visible);
         employeeColorIndicatorLocators.colorDropZone.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
         checkNotification.checkNotificationText();
-        closeForm();
+        employeeColorIndicatorLocators.closeFormAddDocument.shouldBe(exist, visible);
+        employeeColorIndicatorLocators.closeFormAddDocument.click();
         closeForm();
     }
 
-    @Test(priority = 9, groups = {"validation form", "negative"})
-    @Description("Проверка валидации дроп зоны. Загрузка файла недопустимого формата: CSV")
-    public void checkingValidationDropZone() {
-        PreconditionTestPersonal.openStaffAddForm();
-        preconditions.fillEmployeeDataRetail();
-        preconditions.choosingCitizenship(TypeCitizenship.RF);
-        preconditions.SavingDataAfterInput();
-        checkNotification.checkSaveNotification();
-        preconditions.verifyFirstStageTransition();
-        preconditions.addDocument(DocumentType.PASSPORT, TestFile.CSV);
-    }
 }

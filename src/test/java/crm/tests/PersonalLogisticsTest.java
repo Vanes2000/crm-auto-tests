@@ -26,7 +26,7 @@ public class PersonalLogisticsTest extends BasedTest {
     public void addPersonalWithATransferAndARequiredDocument() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataLogistics();
-        preconditions.choosingCitizenship(TypeCitizenship.Tajikistan);
+        preconditions.choosingCitizenship(TypeCitizenship.TJK);
         preconditions.fillTransferModal();
         preconditions.SavingDataAfterInput();
         checkNotification.checkSaveNotification();
@@ -44,7 +44,7 @@ public class PersonalLogisticsTest extends BasedTest {
     public void CheckingTheAdditionOfAnEmployeeWithoutATransferAndARequiredDocument() {
         PreconditionTestPersonal.openStaffAddForm();
         preconditions.fillEmployeeDataLogistics();
-        preconditions.choosingCitizenship(TypeCitizenship.Tajikistan);
+        preconditions.choosingCitizenship(TypeCitizenship.TJK);
         preconditions.SavingDataAfterInput();
         checkNotification.checkSaveNotification();
         preconditions.verifyFirstStageTransition();

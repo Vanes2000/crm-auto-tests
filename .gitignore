@@ -20,3 +20,4 @@ build/
 target/
 *.html
 *.png
+test_data/

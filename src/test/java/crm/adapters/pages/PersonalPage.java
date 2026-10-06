@@ -32,9 +32,15 @@ public class PersonalPage {
 
         public SelenideElement fieldCitizenship = $x("//label[contains(., 'Гражданство')]/following-sibling::div//input");
 
-        public SelenideElement buttonCloseAddFrom = $x("//button[@name=\"form_btn_Закрыть\"]");
+        public SelenideElement buttonCloseAddForm = $x("//button[@name=\"form_btn_Закрыть\"]");
 
         public SelenideElement buttonSave = $x("//button[@name='form_btn_Сохранить']");
+
+        public SelenideElement fieldGender = $x ( "//input[@name=\"form_field_sex_id\"]" );
+
+        public SelenideElement man = $x ( "//div[@class=\"v-list-item__content\"]//p[text()=' Мужской ']" );
+
+        public SelenideElement woman = $x ( "//div[@class=\"v-list-item__content\"]//p[text()=' Женский ']" );
 
         //Чек-боксы
 
@@ -88,7 +94,7 @@ public class PersonalPage {
 
         public SelenideElement colorCheckBoxEmploymentAvailable = $x("//div[@name=\"form_field_need_employed\"]//div[@class=\"v-input__control\"]");
 
-        public SelenideElement colorCheckBoxFullTime = $x("//div[@name=\"form_field_need_employed\"]//div[@class=\"v-input__control\"]");
+        public SelenideElement colorCheckBoxFullTime = $x("//div[@name=\"form_field_in_state\"]//div[@class=\"v-input--selection-controls__ripple\"]");
 
         public SelenideElement colorCheckBoxWithoutIdentificationDocuments = $x("//div[@name=\"form_field_is_mass\"]//div[@class=\"v-input__control\"]");
 
@@ -103,6 +109,8 @@ public class PersonalPage {
         public SelenideElement colorDocumentType = $x("//div[@name=\"form_field_doc_id\"]//div[@class=\"v-input__control\"]");
 
         public SelenideElement colorDropZone = $x("//div[@class=\"dropzone vue-dropzone dropzone dropzone--error\"]");
+
+        public SelenideElement closeFormAddDocument = $x ( "//button[@type=\"submit\"]//span[@class=\"v-btn__content\" and text()=\" Закрыть \"]" );
 
     }
 
