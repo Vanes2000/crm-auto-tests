@@ -134,6 +134,17 @@ public class PreconditionTestPersonal {
         clickSaveDocument();
     }
 
+    @Description("Добавление двух файлов в дроп зону")
+    public void uploadTwoFiles( DocumentType type, TestFile file , TestFile jpg1 ) {
+        openDocumentForm();
+        UrlChecks.PersonalCreationChecks.checkingAddDocumentForm();
+        employeeDocumentsForm.divClickable.shouldBe(exist).uploadFromClasspath(file.getPathFile());
+        employeeDocumentsForm.divClickable.shouldBe(exist).uploadFromClasspath(file.getPathFile());
+        clickSelectDocument();
+        type.getElement().shouldBe(exist, visible).click();
+        clickSaveDocument();
+    }
+
     @Description("Клик по селекту для выбора документа")
     private void clickSelectDocument() {
         employeeDocumentsForm.divSelectSlot.shouldBe(exist, visible).click();
@@ -158,6 +169,7 @@ public class PreconditionTestPersonal {
     public void updatePage() {
         Selenide.refresh();
     }
+
 }
 
 
