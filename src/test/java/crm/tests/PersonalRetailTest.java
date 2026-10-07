@@ -64,6 +64,7 @@ public class PersonalRetailTest extends BasedTest {
                 .shouldBe(exist, visible)
                 .shouldHave(exactText("Сотрудник уже есть в системе, перейти"));
         closeForm();
+        preconditions.updatePage();
     }
 
     @Test(priority = 5, groups = {"system"})
@@ -160,6 +161,21 @@ public class PersonalRetailTest extends BasedTest {
         employeeColorIndicatorLocators.closeFormAddDocument.shouldBe(exist, visible);
         employeeColorIndicatorLocators.closeFormAddDocument.click();
         closeForm();
+    }
+
+    @Test(priority = 9, groups = {"validation form", "negative"})
+    @Description("Проверка валидации допустимого количества файлов")
+    public void checkingValidationDropZone() {
+        PreconditionTestPersonal.openStaffAddForm();
+        preconditions.fillEmployeeDataRetail();
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
+        preconditions.SavingDataAfterInput();
+        checkNotification.checkSaveNotification();
+        preconditions.verifyFirstStageTransition();
+        preconditions.addDocument(DocumentType.PASSPORT, TestFile.CSV);
+        employeeColorIndicatorLocators.colorDropZone.shouldBe(cssValue(ColorPage.COLOR, ColorPage.ERROR_COLOR));
+        checkNotification.checkAllowedFormatsText();
+
     }
 
 }

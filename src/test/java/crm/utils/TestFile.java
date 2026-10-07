@@ -3,6 +3,7 @@ package crm.utils;
 public enum TestFile {
 
     JPG("TestFile/file.jpg"),
+    JPG1("TestFile/file2.jpg"),
     TXT("TestFile/file.txt"),
     PDF("TestFile/file.pdf"),
     XLSX("TestFile/file.xlsx"),

@@ -27,4 +27,20 @@ public class CheckNotification {
                 .shouldHave(exactText("Проверьте все поля"))
                 .shouldBe(disappear, Duration.ofSeconds(10));
     }
+
+    public void checkFileLimitErrorMessage() {
+        NotificationPage.notification
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .shouldBe (exactText ("Превышено кол-во файлов (1)"))
+                .shouldBe(disappear, Duration.ofSeconds(10));
+    }
+
+    public void checkAllowedFormatsText() {
+        NotificationPage.notification
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .shouldBe (exactText ("Допустимые форматы: png, jpeg, jpg, webp, bmp, raw, doc, docs, docx, pdf, xlsx, xls"))
+                .shouldBe(disappear, Duration.ofSeconds(10));
+    }
+
+
 }
