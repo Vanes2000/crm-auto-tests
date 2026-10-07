@@ -178,4 +178,18 @@ public class PersonalRetailTest extends BasedTest {
 
     }
 
+    @Test(priority =  10, groups = {"validation form", "negative"})
+    @Description("Проверка валидации допустимого количества файлов")
+    public void checkFileLimitExceeded() {
+        PreconditionTestPersonal.openStaffAddForm();
+        preconditions.fillEmployeeDataRetail();
+        preconditions.choosingCitizenship(TypeCitizenship.RU);
+        preconditions.SavingDataAfterInput();
+        checkNotification.checkSaveNotification();
+        preconditions.verifyFirstStageTransition();
+        preconditions.uploadTwoFiles(DocumentType.PASSPORT, TestFile.JPG, TestFile.JPG1);
+        checkNotification.checkFileLimitErrorMessage();
+
+    }
+
 }
