@@ -19,9 +19,22 @@
         <pdf.version>1.8.1</pdf.version>
         <openscv.version>5.7.1</openscv.version>
         <datafaker.version>2.5.3</datafaker.version>
+        <io.rest.version>5.5.0</io.rest.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${io.rest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${io.rest.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
