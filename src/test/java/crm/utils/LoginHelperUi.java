@@ -3,7 +3,7 @@ package crm.utils;
 import crm.UserConfig;
 import crm.adapters.pages.AuthorizationPage;
 
-public class LoginHelper {
+public class LoginHelperUi {
 
     AuthorizationPage authorizationPage = new AuthorizationPage();
 
@@ -19,12 +19,11 @@ public class LoginHelper {
         loginAsUser("domnin", UserConfig.getPassword("domnin"));
     }
 
-    public void loginAsManagerLogistic() {
-        loginAsUser("Logistics_m_auth", UserConfig.getPassword("Logistics_m_auth"));
-    }
+    public void loginAsManagerLogistic() {loginAsUser("Logistics_m_auth", UserConfig.getPassword("Logistics_m_auth"));}
 
     public void loginAsUser(String login, String password) {
         authorizationPage.dataEntry(login, password);
     }
+
 
 }
