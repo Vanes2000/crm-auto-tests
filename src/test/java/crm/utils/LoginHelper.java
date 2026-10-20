@@ -2,8 +2,9 @@ package crm.utils;
 
 import crm.UserConfig;
 import crm.adapters.pages.AuthorizationPage;
+import crm.api.TokenProvider;
 
-public class LoginHelperUi {
+public class LoginHelper {
 
     AuthorizationPage authorizationPage = new AuthorizationPage();
 
@@ -21,9 +22,14 @@ public class LoginHelperUi {
 
     public void loginAsManagerLogistic() {loginAsUser("Logistics_m_auth", UserConfig.getPassword("Logistics_m_auth"));}
 
+    //Общий метод авторизации UI
     public void loginAsUser(String login, String password) {
         authorizationPage.dataEntry(login, password);
     }
 
+    //Общий метод авторизации API
+    public void authorize(String login, String password) {
+
+    }
 
 }
