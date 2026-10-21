@@ -2,7 +2,6 @@ package crm.utils;
 
 import crm.UserConfig;
 import crm.adapters.pages.AuthorizationPage;
-import crm.api.TokenProvider;
 
 public class LoginHelper {
 
