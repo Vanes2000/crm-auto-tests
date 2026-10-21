@@ -2,91 +2,117 @@ package crm.api.RequestParams;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class AddPersonal{
 
-	@JsonProperty("is_mass")
-	private boolean isMass;
+	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@Builder
+	public static class AddPersonalOne {
 
-	@JsonProperty("date_rojd")
-	private String dateRojd;
+		@JsonProperty("is_mass")
+		private boolean isMass;
 
-	@JsonProperty("patronymic")
-	private String patronymic;
+		@JsonProperty("date_rojd")
+		private String dateRojd;
 
-	@JsonProperty("account_json")
-	private List<Integer> accountJson;
+		@JsonProperty("patronymic")
+		private String patronymic;
 
-	@JsonProperty("need_employed")
-	private boolean needEmployed;
+		@JsonProperty("account_json")
+		private List<Integer> accountJson;
 
-	@JsonProperty("grajdanstvo_id")
-	private int grajdanstvoId;
+		@JsonProperty("need_employed")
+		private boolean needEmployed;
 
-	@JsonProperty("name_n")
-	private String nameN;
+		@JsonProperty("grajdanstvo_id")
+		private int grajdanstvoId;
 
-	@JsonProperty("surname")
-	private String surname;
+		@JsonProperty("name_n")
+		private String nameN;
 
-	@JsonProperty("telefon")
-	private String telefon;
+		@JsonProperty("surname")
+		private String surname;
 
-	@JsonProperty("in_state")
-	private boolean inState;
+		@JsonProperty("telefon")
+		private String telefon;
 
-	@JsonProperty("direction_json")
-	private List<Integer> directionJson;
+		@JsonProperty("in_state")
+		private boolean inState;
 
-	public boolean isIsMass(){
-		return isMass;
+		@JsonProperty("direction_json")
+		private int directionJson;
+
+		@JsonProperty("sex_id")
+		private int sexId;
+
+		public boolean isIsMass ( ) {
+			return isMass;
+		}
+
+		public String getDateRojd ( ) {
+			return dateRojd;
+		}
+
+		public String getPatronymic ( ) {
+			return patronymic;
+		}
+
+		public List<Integer> getAccountJson ( ) {
+			return accountJson;
+		}
+
+		public boolean isNeedEmployed ( ) {
+			return needEmployed;
+		}
+
+		public int getGrajdanstvoId ( ) {
+			return grajdanstvoId;
+		}
+
+		public String getNameN ( ) {
+			return nameN;
+		}
+
+		public String getSurname ( ) {
+			return surname;
+		}
+
+		public String getTelefon ( ) {
+			return telefon;
+		}
+
+		public boolean isInState ( ) {
+			return inState;
+		}
+
+		public int getDirectionJson ( ) {
+			return directionJson;
+		}
 	}
 
-	public String getDateRojd(){
-		return dateRojd;
-	}
+	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@Builder
+	public static class AddPersonalTwo {
 
-	public String getPatronymic(){
-		return patronymic;
-	}
+		private int personalId;
+		private int grajdanstvoId;
+		private String endPoint;
+		private int parentAction;
+		private int typeParentAction;
+		private Object regionsId;
+		private String cityName;
+		private List<Integer> objectJson;
+		private boolean transfer;
+		private String startPoint;
+		private List<Integer> directionJson;
+		private String regionName;
+		private Object objectTransferId;
+		private Object cityId;
 
-	public List<Integer> getAccountJson(){
-		return accountJson;
-	}
-
-	public boolean isNeedEmployed(){
-		return needEmployed;
-	}
-
-	public int getGrajdanstvoId(){
-		return grajdanstvoId;
-	}
-
-	public String getNameN(){
-		return nameN;
-	}
-
-	public String getSurname(){
-		return surname;
-	}
-
-	public String getTelefon(){
-		return telefon;
-	}
-
-	public boolean isInState(){
-		return inState;
-	}
-
-	public List<Integer> getDirectionJson(){
-		return directionJson;
-	}
+    }
 }

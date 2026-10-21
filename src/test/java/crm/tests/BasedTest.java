@@ -20,7 +20,7 @@ public class BasedTest {
 
     CheckNotification checkNotification = new CheckNotification();
     PreconditionTestPersonal preconditions = new PreconditionTestPersonal();
-    LoginHelper loginHelper = new LoginHelper();
+    LoginHelper.Ui loginHelper = new LoginHelper.Ui ();
     PersonalPage.EmployeeErrorDataForm employeeErrorDataForm = new PersonalPage.EmployeeErrorDataForm();
     PersonalPage.EmployeeColorIndicatorLocators employeeColorIndicatorLocators = new PersonalPage.EmployeeColorIndicatorLocators();
     PersonalPage.EmployeeDataForm employeeDataForm = new PersonalPage.EmployeeDataForm();
