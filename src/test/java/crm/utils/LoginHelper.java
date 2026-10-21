@@ -2,34 +2,34 @@ package crm.utils;
 
 import crm.UserConfig;
 import crm.adapters.pages.AuthorizationPage;
-import crm.api.TokenProvider;
 
 public class LoginHelper {
 
-    AuthorizationPage authorizationPage = new AuthorizationPage();
+        AuthorizationPage authorizationPage = new AuthorizationPage();
 
-    public void loginAsManagerRetail() {
-        loginAsUser("Retail_m_auth", UserConfig.getPassword("Retail_m_auth"));
-    }
+        public void loginAsManagerRetail() {
+            loginAsUserUi("Retail_m_auth", UserConfig.getPassword("Retail_m_auth"));
+        }
 
-    public void loginAsManagerRetail1() {
-        loginAsUser("M_v1_1.1", UserConfig.getPassword("M_v1_1.1"));
-    }
+        public void loginAsManagerRetail1() {
+            loginAsUserUi("M_v1_1.1", UserConfig.getPassword("M_v1_1.1"));
+        }
 
-    public void loginAsDBA() {
-        loginAsUser("domnin", UserConfig.getPassword("domnin"));
-    }
+        public void loginAsDBA() {
+            loginAsUserUi("domnin", UserConfig.getPassword("domnin"));
+        }
 
-    public void loginAsManagerLogistic() {loginAsUser("Logistics_m_auth", UserConfig.getPassword("Logistics_m_auth"));}
+        public void loginAsManagerLogistic() {
+            loginAsUserUi("Logistics_m_auth", UserConfig.getPassword("Logistics_m_auth"));
+        }
 
-    //Общий метод авторизации UI
-    public void loginAsUser(String login, String password) {
-        authorizationPage.dataEntry(login, password);
-    }
+        //Общий метод авторизации UI
+        public void loginAsUserUi(String login, String password) {
+            authorizationPage.dataEntry(login, password);
+        }
 
-    //Общий метод авторизации API
-    public void authorize(String login, String password) {
-
-    }
-
+        //Общий метод авторизации API
+        public void loginAsUserApi(String login, String password) {
+    
+        }
 }
