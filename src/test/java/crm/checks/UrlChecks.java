@@ -22,9 +22,7 @@ public class UrlChecks {
             webdriver().shouldHave(urlContaining("/personal/main/add"));
         }
 
-        public static void checkingAddDocumentForm() {
-            webdriver().shouldHave(urlContaining("/personal/main/add/new_s"));
-        }
+        public static void checkingAddDocumentForm() {webdriver().shouldHave(urlContaining("/personal/main/add/new_s"));}
     }
 
     public static class AuthorizationChecks {
