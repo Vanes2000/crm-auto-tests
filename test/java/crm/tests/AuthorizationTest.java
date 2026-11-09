@@ -1,4 +1,4 @@
-package crm.tests;
+package java.crm.tests;
 
 import crm.adapters.pages.AuthorizationPage;
 import crm.checks.UrlChecks;

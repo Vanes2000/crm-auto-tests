@@ -1,4 +1,4 @@
-package crm;
+package java.crm;
 
 import com.opencsv.exceptions.CsvException;
 import crm.utils.UserCredentialsReader;
@@ -19,6 +19,7 @@ public class UserConfig {
             throw new RuntimeException(e);
         }
     }
+
 
     public static String getPassword(String login) {
         if (users.get(login) == null) {

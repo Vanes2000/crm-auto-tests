@@ -4,10 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>crm</groupId>
-    <artifactId>crm</artifactId>
-    <version>1.0.0</version>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,12 +11,17 @@
         <relativePath/>
     </parent>
 
+    <groupId>crm</groupId>
+    <artifactId>crm</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
     <properties>
         <final.name>crm</final.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
-        <aspectj.version>1.9.24</aspectj.version>
+        <aspectj.version>1.9.23</aspectj.version>
         <allure.version>2.24.0</allure.version>
         <selenide.version>7.2.0</selenide.version>
         <pdf.version>1.8.1</pdf.version>
@@ -40,20 +41,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>${io.rest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${io.rest.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -152,7 +139,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.2.5</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
@@ -183,4 +170,8 @@
             </plugin>
         </plugins>
     </build>
+
+    <modules>
+        <module>helper_api</module>
+    </modules>
 </project>
