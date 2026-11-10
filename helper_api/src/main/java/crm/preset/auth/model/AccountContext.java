@@ -1,0 +1,4 @@
+package crm.preset.auth.model;
+
+public class AccountContext {
+}

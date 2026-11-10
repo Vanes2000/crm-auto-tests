@@ -20,7 +20,6 @@ public class UserConfig {
         }
     }
 
-
     public static String getPassword(String login) {
         if (users.get(login) == null) {
             throw new NoSuchElementException("Данные для авторизации не найдены");

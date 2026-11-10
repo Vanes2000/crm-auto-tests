@@ -28,6 +28,7 @@
         <openscv.version>5.7.1</openscv.version>
         <datafaker.version>2.5.3</datafaker.version>
         <io.rest.version>5.5.0</io.rest.version>
+        <testng.version>7.7.1</testng.version>
     </properties>
 
     <dependencies>
@@ -100,8 +101,8 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.1</version>
-            <scope>test</scope>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
