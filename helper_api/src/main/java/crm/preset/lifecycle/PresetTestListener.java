@@ -1,4 +1,4 @@
-package crm.preset.auth.lifecycle;
+package crm.preset.lifecycle;
 
 public class PresetTestListener {
 }

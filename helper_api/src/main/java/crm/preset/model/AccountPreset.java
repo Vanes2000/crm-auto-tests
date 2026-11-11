@@ -1,4 +1,4 @@
-package crm.preset.auth.model;
+package crm.preset.model;
 
 public class AccountPreset {
 }

@@ -1,4 +1,4 @@
-package crm.preset.auth.db.account;
+package crm.preset.db.account;
 
 public class AccountRepository {
 }
