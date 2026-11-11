@@ -11,7 +11,7 @@ public enum Role {
 
     MANAGER_RETAIL("[1]",
             "[1,2,3,4,5]",
-            1,
+            4,
             "",
             "#000000",
             false);
@@ -28,31 +28,31 @@ public enum Role {
 
     private final boolean isChief;
 
-    public String getDirectionJson ( ) {
+    public String getDirectionJson() {
         return directionJson;
     }
 
-    public String getObjectType ( ) {
+    public String getObjectType() {
         return objectType;
     }
 
-    public int getPermissionId ( ) {
+    public int getPermissionId() {
         return permissionId;
     }
 
-    public String getOfficeId ( ) {
+    public String getOfficeId() {
         return officeId;
     }
 
-    public String getColor ( ) {
+    public String getColor() {
         return color;
     }
 
-    public boolean isChief ( ) {
+    public boolean isChief() {
         return isChief;
     }
 
-    Role ( String directionJson, String objectType, int permissionId, String officeId, String color, boolean isChief) {
+    Role(String directionJson, String objectType, int permissionId, String officeId, String color, boolean isChief) {
         this.directionJson = directionJson;
         this.objectType = objectType;
         this.permissionId = permissionId;
