@@ -2,19 +2,9 @@ package crm.preset.role;
 
 public enum Role {
 
-	DBA("[1,2,4,6,7]",
-			"[1,2,3,4,5,6,7,8,9,10,11,12,13]",
-			1,
-			"",
-			"#000000",
-			false),
+	DBA("[1,2,4,6,7]","[1,2,3,4,5,6,7,8,9,10,11,12,13]",1,"","#000000",false),
 
-	MANAGER_RETAIL("[1]",
-			"[1,2,3,4,5]",
-			4,
-			"",
-			"#000000",
-			false);
+	MANAGER_RETAIL("[1]","[1,2,3,4,5]",4,"","#000000",false);
 
 	private final String directionJson;
 
@@ -28,27 +18,27 @@ public enum Role {
 
 	private final boolean isChief;
 
-	public String getDirectionJson( ) {
+	public String getDirectionJson() {
 		return directionJson;
 	}
 
-	public String getObjectType( ) {
+	public String getObjectType() {
 		return objectType;
 	}
 
-	public int getPermissionId( ) {
+	public int getPermissionId() {
 		return permissionId;
 	}
 
-	public String getOfficeId( ) {
+	public String getOfficeId() {
 		return officeId;
 	}
 
-	public String getColor( ) {
+	public String getColor() {
 		return color;
 	}
 
-	public boolean isChief( ) {
+	public boolean isChief() {
 		return isChief;
 	}
 

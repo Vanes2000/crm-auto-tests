@@ -4,10 +4,10 @@ public record AccountContext(long id,String token) {
 
 	public AccountContext {
 		if (id <= 0) {
-			throw new IllegalArgumentException("id must be > 0, got " + id);
+			throw new IllegalArgumentException("id должен быть больше 0, получено " + id);
 		}
-		if (token == null || token.isBlank( )) {
-			throw new IllegalArgumentException("token must be non-blank");
+		if (token == null || token.isBlank()) {
+			throw new IllegalArgumentException("токен не должен быть пустым");
 		}
 	}
 
