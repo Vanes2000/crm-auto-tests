@@ -1,6 +1,6 @@
-package crm.utils;
+package java.crm.utils;
 
-import crm.UserConfig;
+import java.crm.UserConfig;
 import crm.adapters.pages.AuthorizationPage;
 
 public class LoginHelper {
