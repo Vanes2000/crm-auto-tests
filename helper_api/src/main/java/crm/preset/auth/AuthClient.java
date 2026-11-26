@@ -15,8 +15,21 @@ public class AuthClient {
 
     private final ConcurrentHashMap<Long, String> tokens = new ConcurrentHashMap<>();
 
+    private String urlCheck() {
+        String baseUrl = System.getProperty("api.base_url");
+
+        if (baseUrl == null || baseUrl.isBlank()) {
+            throw new IllegalStateException("Системное свойство 'api.base_url' не задано");
+        }
+        return baseUrl;
+    }
+
 
     public String signIn(long accountId, String login, String password) {
+
+        if (accountId <= 0) {
+            throw new IllegalArgumentException("accountId должен быть больше 0");
+        }
 
         if (login == null || login.isBlank()) {
             throw new IllegalArgumentException("Логин не должен быть null или пустым");
@@ -26,20 +39,19 @@ public class AuthClient {
             throw new IllegalArgumentException("Пароль не должен быть null или пустым");
         }
 
-        if (accountId <= 0) {
-            throw new IllegalArgumentException("accountId должен быть больше 0");
-        }
+        return tokens.computeIfAbsent(accountId, id -> doSignIn(login, password));
+    }
+
+    public String getToken(long accountId) {
+        return tokens.get(accountId);
+    }
+
+    private String doSignIn(String login, String password) {
 
         Map<String, String> requestBody = Map.of("login", login, "password", password);
 
-        String baseUrl = System.getProperty("api.base_url");
-
-        if (baseUrl == null || baseUrl.isBlank()) {
-            throw new IllegalStateException("Системное свойство 'api.base_url' не задано");
-        }
-
         RequestSpecification requestSpec = new RequestSpecBuilder()
-                .setBaseUri(baseUrl)
+                .setBaseUri(urlCheck())
                 .setContentType(ContentType.JSON)
                 .build();
 
@@ -57,15 +69,10 @@ public class AuthClient {
                 .path("access_token");
 
         if (token == null || token.isBlank()) {
-            throw new IllegalStateException("Для учетной записи access_token имеет значение null или является пустым. " + accountId);
+            throw new IllegalStateException("Для учетной записи access_token имеет значение null или является пустым. ");
         }
 
-        tokens.put(accountId, token);
         return token;
-    }
-
-    public String getToken(long accountId) {
-        return tokens.get(accountId);
     }
 
 }
